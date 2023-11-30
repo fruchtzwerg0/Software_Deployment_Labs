@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+  wordpress:
+    depends_on:
+      - mysql
+    environment:
+         WORDPRESS_DB_HOST: localhost:3306
+         WORDPRESS_DB_USER: wordpress_user
+         WORDPRESS_DB_PASSWORD: wordpress_password
+         WORDPRESS_DB_NAME: wordpress
+    container_name: wordpress_container
+    restart: always
+    ports:
+      - "80:80"
+    volumes:
+      - wordpress_volume:/var/www/html
+    build:
+      context: ./wordpress
+
+  mysql:
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_USER: wordpress_user
+      MYSQL_PASSWORD: wordpress_password
+      MYSQL_DATABASE: wordpress_db
+    container_name: mysql_container
+    restart: always
+    volumes: 
+      - mysql_volume:/var/lib/mysql
+    build:
+      context: ./mysql
+
+volumes:
+  mysql_volume:
+  wordpress_volume:

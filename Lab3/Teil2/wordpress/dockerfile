@@ -1,0 +1,38 @@
+FROM debian:buster
+
+ENV WORDPRESS_DB_NAME 'wordpress' \
+    WORDPRESS_DB_USER 'wordpress_user' \
+    WORDPRESS_DB_PASSWORD 'wordpress_password' \
+    WORDPRESS_DB_HOST 'localhost:3306'
+
+RUN apt-get update && \
+    apt-get install -y \
+    apache2 \
+    libapache2-mod-php \
+    php \
+    php-mbstring \
+    php-xml \
+    php-curl \
+    php-gd \
+    php-mysql \
+    php-xmlrpc \
+        unzip \
+        wget \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /var/www/html
+
+RUN wget -O wordpress.zip https://wordpress.org/latest.zip && \
+    unzip wordpress.zip && \
+    rm wordpress.zip && \ 
+    chown -R www-data:www-data /var/www/html
+
+RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
+
+VOLUME ["/var/www/html"]
+
+# Expose port 80
+EXPOSE 80
+
+# Start Apache in the foreground
+CMD ["apache2ctl", "-D", "FOREGROUND"]
