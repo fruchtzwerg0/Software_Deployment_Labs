@@ -26,7 +26,7 @@ Dann verbindet man `kubectl` mit dem Kubernetes Cluster.
 Die beiden yaml files werden mit `kubectl apply -f <Namen>.yaml` deployed.
 
 ![AKS Cluster im Azure Portal](../Lab4/images/Screenshot%202023-12-20%20105510.png)
-![Wordpress Service](/images/Screenshot%202023-12-20%20105525.png)
-![Deployment der yaml files](/images/Screenshot%202023-12-20%20105535.png)
-![Die laufenden pods](/images/Screenshot%202023-12-20%20105629.png)
-![Load Balancer bitte ignorieren, ist ein Artefakt des Testings](/images/Screenshot%202023-12-20%20105709.png)
+![Wordpress Service](../Lab4/images/Screenshot%202023-12-20%20105525.png)
+![Deployment der yaml files](../Lab4/images/Screenshot%202023-12-20%20105535.png)
+![Die laufenden pods](../Lab4/images/Screenshot%202023-12-20%20105629.png)
+![Load Balancer bitte ignorieren, ist ein Artefakt des Testings](../Lab4/images/Screenshot%202023-12-20%20105709.png)
